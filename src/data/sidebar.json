@@ -1,0 +1,156 @@
+[
+    {
+        "title": "Perfil",
+        "icon": "bi-person-fill",
+        "childrens": [
+            {
+                "title": "Cuenta",
+                "path": "/cuenta"
+            },
+            {
+                "title": "Configuración",
+                "path": "/configuracion"
+            },
+            {
+                "title": "Salir",
+                "path": "/logout"
+            }
+        ]
+    },
+    {
+        "title": "Facturación",
+        "icon": "bi-file-earmark-post",
+        "childrens": [
+            {
+                "title": "Archivo",
+                "icon": "bi bi-file-earmark-break",
+                "path": "/",
+                "childrens": [
+                    {
+                        "title": "Clientes",
+                        "icon": "bi-person-fill",
+                        "childrens": [
+                            {
+                                "title": "Crear",
+                                "icon": "bi bi-clipboard-plus",
+                                "path": "/addclientes"
+                            },
+                            {
+                                "title": "Actualizar",
+                                "icon": "bi bi-arrow-down-up",
+                                "path": "/updclientes"
+                            },
+                            {
+                                "title": "Eliminar",
+                                "icon": "bi bi-clipboard-x",
+                                "path": "/delclientes"
+                            }
+
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Movimientos",
+                "icon": "bi-info-circle-fill",
+                "path": "/about",
+                "childrens": [
+                    {
+                        "title": "Facturación",
+                        "icon": "bi bi-receipt",
+                        "childrens": [
+                            {
+                                "title": "Ventas",
+                                "icon": "bi-file-earmark-post",
+                                "path": "/ventas"
+                            },
+                            {
+                                "title": "Girf Card",
+                                "icon": "bi bi-credit-card",
+                                "path": "/giftcard"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Devolución",
+                        "icon": "bi bi-clipboard2-x",
+                        "path": "/devolucion"
+                    },
+                    {
+                        "title": "Proformas",
+                        "icon": "bi bi-clipboard2",
+                        "path": "/proformas"
+                    }
+                ]
+            },
+            {
+                "title": "Informes",
+                "icon": "bi-phone-fill",
+                "childrens": [
+                    {
+                        "title": "Arqueo de Caja",
+                        "icon": "bi-facebook",
+                        "path": "/arqueo"
+                    }
+                ]
+            },
+            {
+                "title": "Ayuda",
+                "icon": "bi-question-circle-fill",
+                "childrens": [
+                    {
+                        "title": "Cambio de contraseña",
+                        "icon": "bi-facebook",
+                        "path": "/cambioPass"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "IWS",
+        "icon": "bi-info-circle-fill",
+        "childrens": [
+            {
+                "title": "Login",
+                "path": "/login"
+            },
+            {
+                "title": "Register",
+                "path": "/register"
+            },
+            {
+                "title": "Forgot Password",
+                "path": "/forgot-password"
+            },
+            {
+                "title": "Reset Password",
+                "path": "/reset-password"
+            }
+        ]
+    },
+    {
+        "title": "Funcionalidades",
+        "icon": "bi-view-list",
+        "childrens": [
+            {
+                "title": "Search",
+                "path": "/search"
+            },
+            {
+                "title": "History",
+                "path": "/history"   
+            }
+        ]
+    },
+    {
+        "title": "Soporte",
+        "icon": "bi-question-circle-fill",
+        "path": "/support"
+    },
+    {
+        "title": "Desarrollo",
+        "icon": "bi-bug",
+        "path": "/report-bug"
+    }
+]
