@@ -1,51 +1,28 @@
 import React from "react";
-import Sidebar from "../components/Sidebar"
-import Header from "../components/commons/Header"
-import { FaBars } from 'react-icons/fa';
-import { Row, Col, Card, Form, Button} from 'react-bootstrap'
+import Sidebar from "../components/Sidebar";
+import { Row, Col, Card, Image } from 'react-bootstrap';
+import { useSelector } from "react-redux";
+import { selectUser } from "../redux/reducer/loginSlice";
 
 
 const IndexPage = props => {
+    const user = useSelector(selectUser);
+
     return (
-        <div className="main">
+        user ?
+            <div className="main">
 
-            
-           
-            <Sidebar />
+                <Sidebar />
 
-            
-            <div className="container">
-                <Row id="iniPage">
                 
-                    <Col>
-                        <h1>Bienvenido !!!</h1>
-                        <Card>
-                            <Card.Body>
-                            <Form id="addCodeForm">
-                                
-                                <Row>
-                                    <Col xs={4}>
-                                        <Form.Group className="mb-3">
-                                            <Form.Label >Ingrese el código del material:</Form.Label>
-                                            <Form.Control type="text" placeholder="Código material" id="codMat" name="codMat" required />
-                                        </Form.Group>
-                                    </Col>
-                                    <Col xs={8}>
-                                        <Form.Group className="mb-3">
-                                            <Form.Label>Ingrese la descripción del Material:</Form.Label>
-                                            <Form.Control type="text" placeholder="Descripción del material" id="descMat" name="descMat" required />
-                                        </Form.Group>
-                                    </Col>
-                                </Row>
-                            </Form>
-                            </Card.Body>
-                        </Card>
-                    </Col>
+                <Row>
+                    <h1 className="welcomeTitle">Bienvenido al gestor de materiales</h1>
+
                 </Row>
-            </div>
-        </div>
+            </div> : <h1>No esta logeado</h1>
     );
 };
+
 
 
 

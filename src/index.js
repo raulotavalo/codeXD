@@ -7,13 +7,19 @@ import { MuiPickersUtilsProvider} from '@material-ui/pickers'
 import DateFnsUtils from '@date-io/date-fns'
 import esLocale from 'date-fns/locale/es'
 
+import loginStorage from "./redux/storage/loginStorage";
+import { Provider } from "react-redux";
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <Provider store={loginStorage}>
   <React.StrictMode>
     <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale}>
     <App />
     </MuiPickersUtilsProvider>
   </React.StrictMode>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

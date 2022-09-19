@@ -5,19 +5,20 @@ import { Container, Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
-import IndexPage from './pages/IndexPage';
+import Index from './pages/IndexPage';
 import CrearCliente from './pages/CrearCliente';
 import ActualizarCliente from './pages/ActualizarCliente';
 import EliminarCliente from './pages/EliminarCliente';
 import Ventas from './pages/Ventas';
-import Login from './pages/Login';
+import PageLogin from './pages/LoginPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const routes = [
   {
     path: "/",
     index: true,
-    main: () => <div><Login /></div>
+    main: () => <div><PageLogin /></div>
   }
   ,
   {
@@ -39,6 +40,13 @@ const routes = [
     path: "/ventas",
     main: () => <div><Ventas /></div>
   }
+  ,
+  {
+    path: "/indexpage",
+    main: () => <div><Index /></div>
+  }
+
+
 ];
 
 function App() {

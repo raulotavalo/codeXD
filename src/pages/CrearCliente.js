@@ -23,7 +23,7 @@ const CrearCliente = props => {
                 <Row id="iniPage">
                     <Modal show={isChecked} onHide={handleClose}>
                         <Modal.Header closeButton>
-                            <Modal.Title>Convenios Especiales</Modal.Title>
+                            <Modal.Title>Convenios Especiales:</Modal.Title>
                         </Modal.Header>
 
                         <Modal.Body>

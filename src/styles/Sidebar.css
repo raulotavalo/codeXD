@@ -4,6 +4,30 @@
   box-sizing: border-box;
 }
 
+#sidebar .pro-sidebar-inner .pro-sidebar-layout .logotext p {
+  font-size: 20px;
+  padding: 0 25px;
+  font-weight: bold;
+}
+
+#sidebar .closemenu {
+
+  position: absolute;
+  right: 0;
+  z-index: 9999;
+  line-height: 20px;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 22px;
+  top: 50px;
+  cursor: pointer;
+}
+
+#sidebar .pro-sidebar-inner {
+  background-color: #2b2b2b;
+  box-shadow: 0.5px 0.866px 2px 0px rgba(0, 0, 0, 0.15);
+}
+
 html, body{
   height: 100vh;
 }
