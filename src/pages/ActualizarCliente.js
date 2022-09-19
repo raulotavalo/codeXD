@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Sidebar from "../components/Sidebar";
+
 import { FaBars } from 'react-icons/fa';
 import { Row, Col, Card, Form, Button, Modal, Alert} from 'react-bootstrap';
 import { DatePicker } from "@material-ui/pickers";
@@ -26,7 +26,7 @@ const ActualizarCliente = props => {
     };
     return (
         <div className="main">
-            <Sidebar />
+
                 <Row id="iniPage">
          
                     <Modal show={isChecked} onHide={handleClose}>

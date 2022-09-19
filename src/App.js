@@ -13,6 +13,8 @@ import Ventas from './pages/Ventas';
 import PageLogin from './pages/LoginPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import SideBar from "./components/SideBar";
+
 
 const routes = [
   {
@@ -53,6 +55,7 @@ function App() {
   return (
     <Container fluid>
         <Router>
+
           <Routes>
             {routes.map((route, index) => (
               <Route
@@ -64,6 +67,7 @@ function App() {
               />
             ))}
           </Routes>
+
         </Router>
     </Container>
   );

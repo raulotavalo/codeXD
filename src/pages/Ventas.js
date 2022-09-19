@@ -1,5 +1,5 @@
 import React, {Component, useState} from "react";
-import Sidebar from "../components/Sidebar";
+
 import { FaBars } from 'react-icons/fa';
 import { Row, Col, Card, Form, Button, Modal} from 'react-bootstrap';
 import { DatePicker } from "@material-ui/pickers";

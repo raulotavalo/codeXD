@@ -1,8 +1,8 @@
 import React from "react";
-import Sidebar from "../components/Sidebar";
 import { Row, Col, Card, Image } from 'react-bootstrap';
 import { useSelector } from "react-redux";
 import { selectUser } from "../redux/reducer/loginSlice";
+import SideBar from "../components/SideBar";
 
 
 const IndexPage = props => {
@@ -10,16 +10,17 @@ const IndexPage = props => {
 
     return (
         user ?
-            <div className="main">
 
-                <Sidebar />
-
+            <Row className="welcome">
                 
-                <Row>
-                    <h1 className="welcomeTitle">Bienvenido al gestor de materiales</h1>
+                <SideBar/>
+                <Col>
+                    <Row>
+                        <h1 className="welcomeTitle">Bienvenido al gestor de materiales</h1>
 
-                </Row>
-            </div> : <h1>No esta logeado</h1>
+                    </Row>
+                </Col>
+            </Row> : <h1>No esta logeado</h1>
     );
 };
 

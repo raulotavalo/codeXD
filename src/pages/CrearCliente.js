@@ -1,8 +1,9 @@
 import React, {useState} from "react";
-import Sidebar from "../components/Sidebar";
+import SideBar from "../components/SideBar";
 import { FaBars } from 'react-icons/fa';
 import { Row, Col, Card, Form, Button, Modal} from 'react-bootstrap';
 import { DatePicker } from "@material-ui/pickers";
+import "../styles/Content.css"
 
 
 const CrearCliente = props => {
@@ -18,8 +19,9 @@ const CrearCliente = props => {
     };
 
     return (
-        <div className="main">
-            <Sidebar />
+        <Row className="addclient">
+                <SideBar/>
+                <Col>
                 <Row id="iniPage">
                     <Modal show={isChecked} onHide={handleClose}>
                         <Modal.Header closeButton>
@@ -296,8 +298,8 @@ const CrearCliente = props => {
                     </Col>
                 </Row>
                 
-          
-        </div>
+            </Col>
+        </Row>
     );
 };
 
