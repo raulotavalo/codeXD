@@ -4,6 +4,8 @@ import { FaBars } from 'react-icons/fa';
 import { Row, Col, Card, Form, Button, Modal} from 'react-bootstrap';
 import { DatePicker } from "@material-ui/pickers";
 import axios from "axios";
+import { useSelector } from "react-redux";
+import { selectUser } from "../redux/reducer/loginSlice";
 
 const url = "https://jsonplaceholder.typicode.com/users/1/todos";
 
@@ -21,13 +23,20 @@ class Ventas extends Component {
         })
     };
 
+
+
     //COMPONENTE CICLO DE VIDA
     componentDidMount() {
     this.peticionGet();
+
     };
 
+    
+
     render(){
+
     return (
+
         <div >
         <Row>
             <Col>
@@ -58,7 +67,7 @@ class Ventas extends Component {
             </table>
             </Col>
         </Row>
-        </div>
+        </div> 
     );
 }
 };

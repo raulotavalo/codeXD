@@ -16,7 +16,7 @@ import SidebarMenu from "./SidebarMenu";
 import "../styles/Sidebar.css"
 const routes = [
   {
-    path: "/",
+    path: "/indexpage",
     name: "Dashboard",
     icon: <FaHome />,
   },
@@ -26,27 +26,27 @@ const routes = [
     icon: <FaRegClipboard />,
     subRoutes: [
       {
-        path: "/settings/profile",
+        path: "/addclientes",
         name: "Clientes",
         icon: <FaUser />,
       },
       {
-        path: "/settings/2fa",
+        path: "/ventas",
         name: "Ventas",
         icon: <FaLock />,
       },
       {
-        path: "/settings/billing",
+        path: "/devoluciones",
         name: "Devoluciones",
         icon: <FaMoneyBill />,
       },
       {
-        path: "/settings/billing",
+        path: "/proformas",
         name: "Proformas",
         icon: <FaMoneyBill />,
       },
       {
-        path: "/settings/billing",
+        path: "/arqueocaja",
         name: "Arqueo de caja",
         icon: <FaMoneyBill />,
       },
@@ -310,7 +310,7 @@ const SideBar = ({ children }) => {
                   exit="hidden"
                   variants={inputAnimation}
                   type="text"
-                  placeholder="Search"
+                  placeholder="Buscar"
                 />
               )}
             </AnimatePresence>

@@ -3,6 +3,8 @@ import SideBar from "../components/SideBar";
 import { FaBars } from 'react-icons/fa';
 import { Row, Col, Card, Form, Button, Modal} from 'react-bootstrap';
 import { DatePicker } from "@material-ui/pickers";
+import { useSelector } from "react-redux";
+import { selectUser } from "../redux/reducer/loginSlice";
 import "../styles/Content.css"
 
 
@@ -17,8 +19,10 @@ const CrearCliente = props => {
     const handleOnChange = () => {
         setShow(!isChecked);
     };
+    const user = useSelector(selectUser);
 
     return (
+        user ?
         <Row className="addclient">
                 <SideBar/>
                 <Col>
@@ -299,7 +303,7 @@ const CrearCliente = props => {
                 </Row>
                 
             </Col>
-        </Row>
+        </Row> : <h1>No esta logeado</h1>
     );
 };
 

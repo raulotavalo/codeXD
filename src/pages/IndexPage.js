@@ -16,7 +16,7 @@ const IndexPage = props => {
                 <SideBar/>
                 <Col>
                     <Row>
-                        <h1 className="welcomeTitle">Bienvenido al gestor de materiales</h1>
+                        <h1 className="welcomeTitle">Bienvenido</h1>
 
                     </Row>
                 </Col>

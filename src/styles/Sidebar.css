@@ -1,17 +1,13 @@
 #sidebar {
-  position: static;
-  width: 220px;
-}
-
-#sidebar .logo {
-  padding: 20px;
+  position: flex;
+  width: 230px;
 }
 
 /* Sidebar */
 .sidebar {
-  background: #1e232b;
+  background: rgb(50, 50, 56);
   color: white;
-  height: 150vh;
+  height: 140vh;
   overflow-y: auto;
 }
 
@@ -45,7 +41,7 @@
   border-radius: 5px;
   background: rgb(238, 238, 238);
 
-  color: #6a758f;
+  color: rgb(128, 128, 128);;
 }
 
 .routes {
@@ -56,11 +52,12 @@
 }
 .link {
   display: flex;
-  color: #c5c7cc;
+  color: rgb(202, 201, 201);
   gap: 10px;
   padding: 5px 10px;
   border-right: 4px solid transparent;
   transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  text-decoration:none;
 }
 .link:hover {
   border-right: 4px solid white;
@@ -74,20 +71,24 @@
 .link_text {
   white-space: nowrap;
   font-size: 15px;
+  text-decoration: none;
+  
 }
 
 .menu {
   display: flex;
-  color: #c5c7cc;
+  color: rgb(202, 201, 201);
 
   padding: 5px 10px;
   border-right: 4px solid transparent;
   transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
   justify-content: space-between;
+
 }
 .menu_item {
   display: flex;
   gap: 10px;
+  
 }
 .menu_container {
   display: flex;
