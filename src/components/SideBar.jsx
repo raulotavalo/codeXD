@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import {FaBook, FaArrowRight, FaClipboardList, FaBars, FaHome, FaLock, FaMoneyBill, FaUser, FaRegClipboard, FaSuitcase, FaPoll, FaFunnelDollar, FaDonate } from "react-icons/fa";
+import {FaHammer, FaTimes, FaJoomla, FaConfluence, FaStripeS, FaFileAlt, FaReceipt, FaRedoAlt, FaMoneyBillWave, FaBook, FaArrowRight, FaClipboardList, FaBars, FaHome, FaLock, FaMoneyBill, FaUser, FaRegClipboard, FaSuitcase, FaPoll, FaFunnelDollar, FaDonate } from "react-icons/fa";
 import { MdMessage } from "react-icons/md";
 import { BiAnalyse, BiSearch, BiPrinter, BiLabel } from "react-icons/bi";
 import { ImLocation} from "react-icons/im";
@@ -33,22 +33,22 @@ const routes = [
       {
         path: "/ventas",
         name: "Ventas",
-        icon: <FaLock />,
+        icon: <FaMoneyBillWave />,
       },
       {
         path: "/devoluciones",
         name: "Devoluciones",
-        icon: <FaMoneyBill />,
+        icon: <FaRedoAlt />,
       },
       {
         path: "/proformas",
         name: "Proformas",
-        icon: <FaMoneyBill />,
+        icon: <FaFileAlt/>,
       },
       {
         path: "/arqueocaja",
         name: "Arqueo de caja",
-        icon: <FaMoneyBill />,
+        icon: <FaReceipt />,
       },
     ],
   },
@@ -56,86 +56,126 @@ const routes = [
     path: "/messages",
     name: "Cartera",
     icon: <FaSuitcase />,
+    subRoutes: [
+      {
+        path: "/",
+        name: "Registrar pago ",
+        icon: <FaMoneyBillWave />,
+      },
+      {
+        path: "/",
+        name: "Reporte caja cobranza",
+        icon: <FaPoll />,
+      },
+      {
+        path: "/",
+        name: "Registrar anticipo",
+        icon: <FaDonate />,
+      },
+      {
+        path: "/",
+        name: "Re-imprimir recibo pago",
+        icon: <BiPrinter />,
+      },
+      {
+        path: "/",
+        name: "Reproceso recaudo tablet",
+        icon: <FaRedoAlt />,
+      },
+    ],
   },
   {
-    path: "/analytics",
+    path: "/",
     name: "Reportes",
     icon: <FaPoll />,
     subRoutes: [
       {
-        path: "/settings/profile",
-        name: "Profile ",
-        icon: <FaUser />,
+        path: "/",
+        name: "Reporte POS-SAP ",
+        icon: <FaStripeS />,
       },
       {
-        path: "/settings/2fa",
-        name: "2FA",
-        icon: <FaLock />,
+        path: "/",
+        name: "Procesar fact POS-SAP",
+        icon: <FaStripeS />,
       },
       {
-        path: "/settings/billing",
-        name: "Billing",
-        icon: <FaMoneyBill />,
+        path: "/",
+        name: "Reporte facturas elec",
+        icon: <FaRegClipboard />,
+      },
+      {
+        path: "/",
+        name: "Documentos electrónicos",
+        icon: <FaRegClipboard />,
+      },
+      {
+        path: "/",
+        name: "Reporte ventas",
+        icon: <FaPoll />,
+      },
+      {
+        path: "/",
+        name: "Reporte ventas CEP",
+        icon: <FaPoll />,
+      },
+      {
+        path: "/",
+        name: "Reporte ventas YMH",
+        icon: <SiYamahamotorcorporation />,
+      },
+      {
+        path: "/",
+        name: "Catalogo online",
+        icon: <FaRegClipboard />,
+      },
+      {
+        path: "/",
+        name: "Reporte sábana",
+        icon: <FaPoll />,
       },
     ],
   },
   {
-    path: "/file-manager",
+    path: "/",
     name: "Preciador",
     icon: <FaFunnelDollar />,
-    subRoutes: [
-      {
-        path: "/settings/profile",
-        name: "Profile ",
-        icon: <FaUser />,
-      },
-      {
-        path: "/settings/2fa",
-        name: "2FA",
-        icon: <FaLock />,
-      },
-      {
-        path: "/settings/billing",
-        name: "Billing",
-        icon: <FaMoneyBill />,
-      },
-    ],
   },
   {
-    path: "/order",
+    path: "/",
     name: "Consolidar ATS",
-    icon: <BsCartCheck />,
+    icon: <FaConfluence />,
   },
   {
-    path: "/settings",
+    path: "/",
     name: "Precios",
     icon: <FaDonate />,
     exact: true
   },
   {
-    path: "/saved",
+    path: "/",
     name: "Imprimir etiquetas",
     icon: <BiPrinter />,
   },
   {
-    path: "/saved",
+    path: "/",
     name: "Modelo experto",
-    icon: <AiFillHeart />,
+    icon: <FaJoomla />,
     subRoutes: [
       {
-        path: "/settings/profile",
-        name: "Profile ",
-        icon: <FaUser />,
+        path: "/",
+        name: "Cotizador ",
+        icon: <FaFunnelDollar />,
       },
       {
-        path: "/settings/2fa",
-        name: "2FA",
-        icon: <FaLock />,
+        path: "/",
+        name: "Reporte operativo",
+        icon: <FaPoll />,
       },
       {
-        path: "/settings/billing",
-        name: "Billing",
-        icon: <FaMoneyBill />,
+        path: "/",
+        name: "Reporte consultas",
+        icon: <BiSearch />,
       },
     ],
   },
@@ -155,73 +195,73 @@ const routes = [
     icon: <FaArrowRight />,
     subRoutes: [
       {
-        path: "/settings/profile",
-        name: "Profile ",
-        icon: <FaUser />,
+        path: "/",
+        name: "Crear solicitud",
+        icon: <FaRegClipboard />,
       },
       {
-        path: "/settings/2fa",
-        name: "2FA",
-        icon: <FaLock />,
+        path: "/",
+        name: "Consulta solicitudes",
+        icon: <BiSearch />,
       },
       {
-        path: "/settings/billing",
-        name: "Billing",
-        icon: <FaMoneyBill />,
+        path: "/",
+        name: "Crear solicitud CEP",
+        icon: <FaRegClipboard />,
+      },
+      {
+        path: "/",
+        name: "Consultas solicitudes CEP",
+        icon: <BiSearch />,
       },
     ],
   },
   {
-    path: "/saved",
+    path: "/",
     name: "PIN PAD",
     icon: <FaBook />,
     subRoutes: [
       {
-        path: "/settings/profile",
-        name: "Profile ",
-        icon: <FaUser />,
+        path: "/",
+        name: "Consulta lote ",
+        icon: <BiSearch />,
       },
       {
-        path: "/settings/2fa",
-        name: "2FA",
-        icon: <FaLock />,
-      },
-      {
-        path: "/settings/billing",
-        name: "Billing",
-        icon: <FaMoneyBill />,
+        path: "/",
+        name: "Cierre PIN PAD",
+        icon: <FaTimes />,
       },
     ],
   },
   {
-    path: "/saved",
+    path: "/",
     name: "Eliminar registro huella",
     icon: <TbFingerprintOff />,
   },
   {
-    path: "/saved",
+    path: "/",
     name: "YAMAHA",
     icon: <SiYamahamotorcorporation />,
     subRoutes: [
       {
-        path: "/settings/profile",
-        name: "Profile ",
-        icon: <FaUser />,
+        path: "/",
+        name: "Consulta de partes ",
+        icon: <BiSearch />,
       },
       {
-        path: "/settings/2fa",
-        name: "2FA",
-        icon: <FaLock />,
+        path: "/",
+        name: "Reporte consulta partes",
+        icon: <FaPoll />,
       },
       {
-        path: "/settings/billing",
-        name: "Billing",
-        icon: <FaMoneyBill />,
+        path: "/",
+        name: "Orden de trabajo",
+        icon: <FaHammer />,
       },
     ],
   },
   {
-    path: "/saved",
+    path: "/",
     name: "Etiquetas series",
     icon: <BiLabel />,
   },
@@ -269,7 +309,7 @@ const SideBar = ({ children }) => {
       <div id = "sidebar">
         <motion.div
           animate={{
-            width: isOpen ? "200px" : "45px",
+            width: isOpen ? "250px" : "45px",
 
             transition: {
               duration: 0.5,
@@ -298,23 +338,7 @@ const SideBar = ({ children }) => {
               <FaBars onClick={toggle} />
             </div>
           </div>
-          <div className="search">
-            <div className="search_icon">
-              <BiSearch />
-            </div>
-            <AnimatePresence>
-              {isOpen && (
-                <motion.input
-                  initial="hidden"
-                  animate="show"
-                  exit="hidden"
-                  variants={inputAnimation}
-                  type="text"
-                  placeholder="Buscar"
-                />
-              )}
-            </AnimatePresence>
-          </div>
+
           <section className="routes">
             {routes.map((route, index) => {
               if (route.subRoutes) {
