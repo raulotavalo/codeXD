@@ -58,27 +58,27 @@ const routes = [
     icon: <FaSuitcase />,
     subRoutes: [
       {
-        path: "/",
+        path: "/cartera/registrarpago",
         name: "Registrar pago ",
         icon: <FaMoneyBillWave />,
       },
       {
-        path: "/",
+        path: "/cartera/reportecaja",
         name: "Reporte caja cobranza",
         icon: <FaPoll />,
       },
       {
-        path: "/",
+        path: "/cartera/registraranticipo",
         name: "Registrar anticipo",
         icon: <FaDonate />,
       },
       {
-        path: "/",
+        path: "/cartera/reimprimirrecibo",
         name: "Re-imprimir recibo pago",
         icon: <BiPrinter />,
       },
       {
-        path: "/",
+        path: "/cartera/reprocesotablet",
         name: "Reproceso recaudo tablet",
         icon: <FaRedoAlt />,
       },
@@ -137,7 +137,7 @@ const routes = [
     ],
   },
   {
-    path: "/",
+    path: "/preciador",
     name: "Preciador",
     icon: <FaFunnelDollar />,
   },
@@ -147,13 +147,13 @@ const routes = [
     icon: <FaConfluence />,
   },
   {
-    path: "/",
+    path: "/precios",
     name: "Precios",
     icon: <FaDonate />,
     exact: true
   },
   {
-    path: "/",
+    path: "/imprimiretiquetas",
     name: "Imprimir etiquetas",
     icon: <BiPrinter />,
   },
@@ -185,7 +185,7 @@ const routes = [
     icon: <ImLocation />,
   },
   {
-    path: "/saved",
+    path: "/generarpagares",
     name: "Generar pagares",
     icon: <FaClipboardList />,
   },
@@ -222,7 +222,7 @@ const routes = [
     icon: <FaBook />,
     subRoutes: [
       {
-        path: "/",
+        path: "/pinpad/consultalote",
         name: "Consulta lote ",
         icon: <BiSearch />,
       },
@@ -234,7 +234,7 @@ const routes = [
     ],
   },
   {
-    path: "/",
+    path: "/eliminarhuella",
     name: "Eliminar registro huella",
     icon: <TbFingerprintOff />,
   },

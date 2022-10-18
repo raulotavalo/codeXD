@@ -1,0 +1,21 @@
+[
+    {
+        "id": 1,
+        "nombre": "No mostrar precio"
+    }
+    ,
+    {
+        "id": 2,
+        "nombre": "Precio contado"
+    }
+    ,
+    {
+        "id": 3,
+        "nombre": "Precio credito"
+    }
+    ,
+    {
+        "id": 4,
+        "nombre": "Ubicación"
+    }
+]

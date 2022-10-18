@@ -75,9 +75,12 @@ const CrearCliente = props => {
                     </Modal>
                     <Col>               
                         <br />
+                        <Row><h2>Ingrese los datos del cliente por favor:</h2></Row>
+                        <br />
                         <Card>
                             <Card.Body>
                             <Form id="addCodeForm">
+                                
                                 <Row>
                                     <Col>
                                         <Form.Group className="mb-3">
@@ -91,7 +94,7 @@ const CrearCliente = props => {
                                     </Col>
                                     <Col>
                                         <Form.Group className="mb-3">
-                                            <Form.Control type="text" placeholder="Código" id="codMat" name="codMat" required />
+                                            <Form.Control type="text" placeholder="Número de identificación" id="codMat" name="codMat" required />
                                         </Form.Group>
                                     </Col>
                                 </Row>

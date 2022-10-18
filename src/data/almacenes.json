@@ -1,0 +1,83 @@
+[
+    {
+        "id":1,
+        "nombre": "1100 | Matriz principal"
+    },
+    {
+        "id":2,
+        "nombre": "1121 | Fomentos"
+    },
+    {
+        "id":3,
+        "nombre": "1123 | Retiros cerrada"
+    },
+    {
+        "id":4,
+        "nombre": "1124 | Bodega auditoria"
+    },
+    {
+        "id":5,
+        "nombre": "1125 | Reemplazado 2125"
+    },
+    {
+        "id":6,
+        "nombre": "1127 | Regional Quito"
+    },
+    {
+        "id":7,
+        "nombre": "1129 | Discount center"
+    },
+    {
+        "id":8,
+        "nombre": "1306 | MtzRepYmh/Polaris"
+    },
+    {
+        "id":9,
+        "nombre": "2101 | Aje showroom Cuenca"
+    },
+    {
+        "id":10,
+        "nombre": "2102 | Aje Pque Calderon"
+    },
+    {
+        "id":11,
+        "nombre": "2103 | Aje Plz. América"
+    },
+    {
+        "id":12,
+        "nombre": "2104 | Aje Orellana"
+    },
+    {
+        "id":13,
+        "nombre": "2105 | Aje el cerrada"
+    },
+    {
+        "id":14,
+        "nombre": "2106 | Aje 10 de agosto"
+    },
+    {
+        "id":15,
+        "nombre": "2107 | Aje Qu cerrada"
+    },
+    {
+        "id":16,
+        "nombre": "2109 | Aje Machala"
+    },
+    {
+        "id":17,
+        "nombre": "2110 | Aje Babahoyo"
+    },
+    {
+        "id":18,
+        "nombre": "2111 | Aje Gran cerrada"
+    },
+    {
+        "id":19,
+        "nombre": "2112 | Aje Calde cerrada"
+    },
+    {
+        "id":20,
+        "nombre": "2113 | Aje Milagro"
+    }
+    
+]

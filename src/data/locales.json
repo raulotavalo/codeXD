@@ -1,0 +1,77 @@
+[
+    {
+        "id": 1,
+        "nombre": "Tabernas"
+    }
+    ,
+    {
+        "id": 2,
+        "nombre": "Feria tabernas"
+    }
+    ,
+    {
+        "id": 3,
+        "nombre": "Feria saldos"
+    }
+    ,
+    {
+        "id": 4,
+        "nombre": "Yamaha"
+    }
+    ,
+    {
+        "id": 5,
+        "nombre": "Outlet balzay"
+    }
+    ,
+    {
+        "id": 6,
+        "nombre": "Ventas corporativas"
+    }
+    ,
+    {
+        "id": 7,
+        "nombre": "Promociones"
+    }
+    ,
+    {
+        "id": 8,
+        "nombre": "Remate martillo"
+    }
+    ,
+    {
+        "id": 9,
+        "nombre": "Orellana feria"
+    }
+    ,
+    {
+        "id": 10,
+        "nombre": "Feria CEP"
+    }
+    ,
+    {
+        "id": 11,
+        "nombre": "Liquidación"
+    }
+    ,
+    {
+        "id": 12,
+        "nombre": "Navidad"
+    }
+    ,
+    {
+        "id": 13,
+        "nombre": "Max Factor"
+    }
+    ,
+    {
+        "id": 14,
+        "nombre": "Boliche botellas"
+    }
+    ,
+    {
+        "id": 15,
+        "nombre": "Showroom feria"
+    }
+    
+]

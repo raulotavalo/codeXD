@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "nombre": "Mayoreo electrodomésticos Cuenca"
+    },
+    {
+        "id": 2,
+        "nombre": "Mayoreo perfumería"
+    }
+    ,
+    {
+        "id": 3,
+        "nombre": "POS-PRUEBAS"
+    }
+    ,
+    {
+        "id": 4,
+        "nombre": "Retail 10 de agosto Quito"
+    }
+    ,
+    {
+        "id": 5,
+        "nombre": "Retail Babahoyo"
+    }
+    ,
+    {
+        "id": 6,
+        "nombre": "Bodega auditoría"
+    }
+]

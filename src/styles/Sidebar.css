@@ -1,13 +1,14 @@
 #sidebar {
   position: static;
-  width: 270px;
+  width: 100px;
+  z-index: 100;/*para se sobreponga sobre los formularios*/
 }
 
 /* Sidebar */
 .sidebar {
   background: rgb(50, 50, 56);
   color: white;
-  height: 140vh;
+  height: 225vh;
   overflow-y: auto;
 }
 
@@ -67,7 +68,7 @@
 }
 .active {
   border-right: 4px solid white;
-  background: rgb(45, 51, 89);
+  background: rgb(255, 255, 255);
 }
 .link_text {
   white-space: nowrap;

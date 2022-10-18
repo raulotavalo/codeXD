@@ -1,0 +1,46 @@
+[
+    {
+        "id": 1,
+        "nombre": "PERFUMERIA"
+    },
+    {
+        "id": 2,
+        "nombre": "YAMAHA MOTOS"
+    },
+    {
+        "id": 3,
+        "nombre": "YAMAHA MUSICAL"
+    },
+    {
+        "id": 4,
+        "nombre": "POLARIS"
+    },
+    {
+        "id": 11,
+        "nombre": "FERRETERIA"
+    },
+    {
+        "id": 5,
+        "nombre": "BAZAR"
+    },
+    {
+        "id": 6,
+        "nombre": "MOTOS CHINAS"
+    },
+    {
+        "id": 7,
+        "nombre": "LICORES"
+    },
+    {
+        "id": 8,
+        "nombre": "LUBRICANTES"
+    },
+    {
+        "id": 9,
+        "nombre": "COMERCIALIZADORA"
+    },
+    {
+        "id": 10,
+        "nombre": "MERCOINTEL"
+    }
+]
