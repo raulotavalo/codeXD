@@ -14,7 +14,7 @@ const LoginPage = props => {
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        if (user==='ADM' && password==='Matilde.01'){
+        if (user==='ADM' && password==='Matilde.02'){
             dispatch(
                 login({
                     user: user,
