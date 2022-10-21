@@ -5,12 +5,12 @@ import { Container, Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
-import Index from './pages/IndexPage';
+import Index from './pages/inicio/Inicio';
 import CrearCliente from './pages/CrearCliente';
 import ActualizarCliente from './pages/ActualizarCliente';
 import EliminarCliente from './pages/EliminarCliente';
-import Ventas from './pages/Ventas';
-import PageLogin from './pages/LoginPage';
+import Ventas from './pages/facturacion/ventas';
+import PageLogin from './pages/login/LoginPage';
 import CarteraRegistrarPago from './pages/cartera/RegistrarPago';
 import CarteraRegistrarAnticipo from './pages/cartera/RegistrarAnticipo';
 import CarteraReimprimirRecibo from './pages/cartera/ReimprimirRecibo';
