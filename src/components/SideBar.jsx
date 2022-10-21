@@ -306,7 +306,7 @@ const SideBar = ({ children }) => {
 
   return (
     <>
-      <div id = "sidebar">
+      <div id = "sidebar" style={{width: isOpen ? "250px" : "45px"}}>
         <motion.div
           animate={{
             width: isOpen ? "250px" : "45px",

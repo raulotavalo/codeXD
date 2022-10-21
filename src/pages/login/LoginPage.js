@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Row, Col, Card, Button, Form, Image } from 'react-bootstrap';
-import "../styles/LoginPage.css";
-import {login} from '../redux/reducer/loginSlice'
+import "../../styles/LoginPage.css";
+import {login} from '../../redux/reducer/loginSlice'
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import ImageLogo from "../../components/ImageLogo";
 
 const LoginPage = props => {
     const [user, setUser]=useState("");
@@ -13,7 +14,7 @@ const LoginPage = props => {
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        if (user==='ADM' && password==='Matilde.01'){
+        if (user==='ADM' && password==='Matilde.02'){
             dispatch(
                 login({
                     user: user,
@@ -46,7 +47,7 @@ const LoginPage = props => {
                         <Form className='formContainer' id="loginForm" onSubmit={handleSubmit}>
                             <Col>
                                 <Form.Group className="mb-3">
-                                    <Image style={{ alignSelf: 'center' }} src={require('../images/logo.png')} />
+                                    <ImageLogo/>
                                 </Form.Group>
                             </Col>
                             <Col className='colContainer' xs={9}>
