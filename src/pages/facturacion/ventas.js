@@ -6,7 +6,7 @@ import { Row, Col, Card, Form, Button, Modal, Table, Tabs, Tab } from 'react-boo
 import FacturaItems from "./facturaItems";
 import FormasPago from "./formasPago";
 import ResumenFactura from "./resumenFactura";
-
+import TopBar from "../../components/TopBar";
 
 const Ventas = props => {
     //VARIABLES DE USUARIO
@@ -16,7 +16,10 @@ const Ventas = props => {
             <Row className="editCode">
                 <SideBar />
                 <Col>
-                    <Row id="iniPage">
+                    <Row>
+                        <TopBar titleHeader='CREAR FACTURA-Sociedad-Oficina de venta' titleUser='Sebastián Enderica'/>
+                    </Row>
+                    <Row id="ventasPage">
                         <Col>
                             <br />
                             <Card>
@@ -24,13 +27,13 @@ const Ventas = props => {
                                     <div >
                                         <Tabs >
                                             <Tab eventKey="tab1" title="Factura">
-                                                <FacturaItems/>
+                                                <FacturaItems />
                                             </Tab>
                                             <Tab eventKey="tab2" title="Método de Pago">
-                                                <FormasPago/>
+                                                <FormasPago />
                                             </Tab>
                                             <Tab eventKey="tab3" title="Confirmar Venta">
-                                                <ResumenFactura/>
+                                                <ResumenFactura />
                                             </Tab>
                                         </Tabs>
                                     </div>
@@ -40,7 +43,6 @@ const Ventas = props => {
                         </Col>
                     </Row>
                 </Col>
-
             </Row> : <h1>No esta logeado</h1>
     );
 };

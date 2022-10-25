@@ -8,7 +8,7 @@
 .sidebar {
   background: rgb(50, 50, 56);
   color: white;
-  height: 225vh;
+  height: 100%;
   overflow-y: auto;
 }
 
