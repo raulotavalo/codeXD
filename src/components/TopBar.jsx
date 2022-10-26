@@ -8,10 +8,10 @@ const TopBar = (props) => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">{props.titleHeader}</Navbar.Brand>
+                <Navbar.Brand >{props.titleHeader}</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
-                    <Nav style={{justifySelf:'flex-end'}}>
+                    <Nav style={{ justifySelf: 'flex-end' }}>
                         <NavDropdown title="Sociedad" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">

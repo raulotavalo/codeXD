@@ -1,12 +1,12 @@
 export default[
     {
-        id: 1,
+        id: 'cbInfoCredito',
         isChecked: true,
         nombre: "Info. Credito"
     }
     ,
     {
-        id: 2,
+        id: 'cbInfoMilla',
         isChecked: false,
         nombre: "Info. Milla"
     }

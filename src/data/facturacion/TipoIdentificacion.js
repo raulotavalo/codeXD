@@ -1,18 +1,18 @@
 export default[
     {
-        id: 1,
+        id: 'cbCedula',
         isChecked: true,
         nombre: "Cédula/RUC"
     }
     ,
     {
-        id: 2,
+        id: 'cbFinalConsumer',
         isChecked: false,
         nombre: "Consumidor Final"
     }
     ,
     {
-        id: 3,
+        id: 'cbPassport',
         isChecked: false,
         nombre: "Pasaporte"
     }
