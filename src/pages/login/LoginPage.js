@@ -5,6 +5,7 @@ import {login} from '../../redux/reducer/loginSlice'
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ImageLogo from "../../components/ImageLogo";
+import soapLogin from "../../soap/soapLogin";
 
 const LoginPage = props => {
     const [user, setUser]=useState("");
@@ -12,13 +13,15 @@ const LoginPage = props => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleSubmit = (e)=>{
+    const handleSubmit = async(e) =>  {
         e.preventDefault();
+        const data = await soapLogin(user, password);
+        alert(data);
         if (user==='ADM' && password==='Matilde.02'){
             dispatch(
                 login({
                     user: user,
-                    password: password,
+                    name: 
                     loggedIn: true
                 })
             );

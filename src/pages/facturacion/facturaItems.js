@@ -40,7 +40,6 @@ const FacturaItems = () => {
     const [showModalClientReg, setShowModalClientReg] = useState(false);
     const [showModalEditCant, setShowModalEditCant] = useState(false);
     //VARIABLES CHECKBOX
-    const [isChecked, setShow] = useState(false);
     const [isCheckedCredito, setIsCheckedCredito] = useState(true);
     const [isCheckedInfoCredito, setIsCheckedInfoCredito] = useState(true);
     const [isCheckedTypeId, setIsCheckedTypeId] = useState(false);
