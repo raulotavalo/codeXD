@@ -12,17 +12,20 @@ const Inicio = props => {
 
     return (
         user ?
-            <Row className="welcome">
+            <Row style={{ height: '100vh' }}>
                 <SideBar />
                 <Col>
-                    <h1 className="welcomeTitle">Bienvenido a ODISEO</h1>
                     <Card>
+                        <h1 className="welcomeTitle">Bienvenido a ODISEO</h1>
                         <Card.Body className="imageContainer">
-                            <ImageLogo/>
+                            <ImageLogo />
                         </Card.Body>
                     </Card>
                 </Col>
-            </Row> : <h1>No esta logeado</h1>
+            </Row> :
+            <Row style={{ height: '100vh' }}>
+                <h1>No esta logeado</h1>
+            </Row>
     );
 };
 

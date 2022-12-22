@@ -1,209 +1,149 @@
 import React, { useState } from "react";
-import { Row, Col, Card, Form, Button, Table } from 'react-bootstrap';
-import "../../styles/Container.css"
-import local from "../../data/locales.json";
-import tipoPago from '../../data/facturacion/tipoPago.js';
-import tipoIdentificacion from '../../data/facturacion/TipoIdentificacion.js';
+import { Row, Col, Card, Form, Button, Table, Modal, ListGroup } from 'react-bootstrap';
+import "../../styles/Container.css";
+import { BsFillCheckCircleFill } from "react-icons/bs";
+import { MdCancel } from "react-icons/md";
+import ButtonIcon from "../../components/ButtonIcon";
+import CashPaymentWay from "../../components/formasPagoCards/CashPaymentWay";
+import AdvancePaymentWay from "../../components/formasPagoCards/AdvancePaymentWay";
+import CheckPaymentWay from "../../components/formasPagoCards/CheckPaymentWay";
+import CREAPaymentWay from "../../components/formasPagoCards/CREAPaymentWay";
+import CreditCardPaymentWay from "../../components/formasPagoCards/CreditCardPaymentWay";
+import DebitCardPaymentWay from "../../components/formasPagoCards/DebitCardPaymentWay";
+import DepositPaymentWay from "../../components/formasPagoCards/DepositPaymentWay";
+import ElectronicMoneyPaymentWay from "../../components/formasPagoCards/ElectronicMoneyPaymentWay";
+import GiftcardPaymentWay from "../../components/formasPagoCards/GiftcardPaymentWay";
+import HoldbackAddedValueTaxPaymentWay from "../../components/formasPagoCards/HoldbackAddedValueTaxPaymentWay";
+import HoldbackIncomeTaxPaymentWay from "../../components/formasPagoCards/HoldbackIncomeTaxPaymentWay";
+import PINPADPaymentWay from "../../components/formasPagoCards/PINPADPaymentWay";
+import TransferencePaymentWay from "../../components/formasPagoCards/TransferencePaymentWay";
+import "../../styles/facturacion/Ventas.css"
+
+
 
 const FormasPago = () => {
-
-    //VARIABLES CHECKBOX
-    const [isChecked, setShow] = useState(false);
-    //CAMBIA DE ESTADO CHECKBOX
-
-    const handleOnChange = () => {
-        setShow(!isChecked);
+    const onSubmitFormPaymentWay = async (event) => {
+        event.preventDefault();
+        //await insertCode();
     };
-    
-    //VARIABLE PARA MOSTRAR TABLA
-    const [isPushSearch, changeToUpdate] = useState(true);
-    //CAMBIA ESTADO  DE BOTON
-    function ButtonOnChange() {
-        changeToUpdate(!isPushSearch);
+
+    const paymentWays = [
+        {
+            name: 'Efectivo',
+            card: <CashPaymentWay />,
+        },
+        {
+            name: 'Tarjeta de crédito',
+            card: <CreditCardPaymentWay />,
+        },
+        {
+            name: 'Tarjeta de débito',
+            card: <DebitCardPaymentWay />,
+        },
+        {
+            name: 'Anticipo',
+            card: <AdvancePaymentWay />,
+        },
+        {
+            name: 'Cheque',
+            card: <CheckPaymentWay />,
+        },
+        {
+            name: 'Coop. CREA',
+            card: <CREAPaymentWay />,
+        },
+        {
+            name: 'Depósito',
+            card: <DepositPaymentWay />,
+        },
+        {
+            name: 'Giftcard',
+            card: <GiftcardPaymentWay />,
+        },
+        {
+            name: 'Transferencia',
+            card: <TransferencePaymentWay />,
+        },
+        {
+            name: 'Dinero Electrónico',
+            card: <ElectronicMoneyPaymentWay />,
+        },
+        {
+            name: 'PIN PAD',
+            card: <PINPADPaymentWay />,
+        },
+        {
+            name: 'Retención IVA',
+            card: <HoldbackAddedValueTaxPaymentWay />,
+        },
+        {
+            name: 'Ret. Imp. Renta',
+            card: <HoldbackIncomeTaxPaymentWay />,
+        },
+    ];
+
+    const [paymentSelected, setPaymentSelected] = useState(paymentWays[0]);
+
+    const paymentWayClicked = (selectedPayment) => {
+        setPaymentSelected(selectedPayment);
     };
-    //RESETEAR FORMULARIO
-    function resetForm() {
-        document.getElementById("consultarMaterialesForm").reset();
-        document.getElementById("agregarNuevoPrecioForm").reset();
-        setShow(false);
-    }
-    //LISTA DE CHECKBOX TIPO PAGO
-    const [switches, setSwitches] = useState(tipoPago);
-    //VERIFICA QUE SOLO UN CHECKBOX ESTE ACTIVO
-    function onChangeSwitch(id) {
-        setSwitches(switches.map(x => {
-            if (x.id === id) return { ...x, isChecked: true };
-            else return { ...x, isChecked: false };
-        }));
-    }
-    //LISTA DE CHECKBOX TIPO IDENTIFICACION
-    const [switchId, setSwitchId] = useState(tipoIdentificacion);
-    //VERIFICA QUE SOLO UN CHECKBOX ESTE ACTIVO
-    function onChangeId(id) {
-        setSwitchId(switchId.map(x => {
-            if (x.id === id) return { ...x, isChecked: true };
-            else return { ...x, isChecked: false };
-        }));
-    }
-    /*
-    let tipoPagoElejido = tipoPago.map((metodo) => {
-        if (metodo.isChecked == true) {
-            return (
-            metodo.nombre
-            );
-        }
-    }
-    );
-    */
-    let tipoPagoElejido = 's';
 
     return (
         <>
             <br />
             <Card>
+                <Card.Header>
+                    Ingresar de materiales
+                </Card.Header>
                 <Card.Body>
-                    <Form id="consultarMaterialesForm">
-                        <Row><h4>{tipoPagoElejido}</h4></Row>
-                        <Row>
-                            {switches.map((item) => {
-                                if (item.isChecked == true) {
-                                    tipoPagoElejido = item.nombre.toString();
-                                }
-                                return (
-                                    <Col key={item.id} >
-                                        <Form.Check type="checkbox" label={item.nombre.toString()} checked={item.isChecked} onChange={() => onChangeSwitch(item.id)} />
-                                    </Col>
-                                );
-                            })}
-
-                            {switchId.map((item) => {
-                                return (
-                                    <Col key={item.id} >
-                                        <Form.Check type="checkbox" label={item.nombre.toString()} checked={item.isChecked} onChange={() => onChangeId(item.id)} />
-                                    </Col>
-                                );
-                            })}
-
-                            <Col>
-                                <Form.Check type="checkbox" label="Cliente Coorporativo" />
+                    <Form id="facturaPaymentwaysForm" onSubmit={onSubmitFormPaymentWay}>
+                        <Row >
+                            <Col xs={2}>
+                                <ListGroup>
+                                    {paymentWays.map((paymentWay, index) => {
+                                        return <ListGroup.Item key={index + paymentWay.name} action onClick={() => paymentWayClicked(paymentWay)}>{paymentWay.name}</ListGroup.Item>
+                                    })}
+                                </ListGroup>
                             </Col>
-
+                            <Col xs={7}>
+                                <Card>
+                                    <Card.Header>
+                                        {"Forma de pago seleccionada: " + paymentSelected.name}
+                                    </Card.Header>
+                                    <Card.Body>
+                                        {paymentSelected.card}
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                            <Col xs={3} >
+                                <ListGroup >
+                                    <ListGroup.Item>Forma de pago 1   valor: 0.00</ListGroup.Item>
+                                    <ListGroup.Item>Forma de pago 2   valor: 0.00</ListGroup.Item>
+                                    <ListGroup.Item>Forma de pago 3   valor: 0.00</ListGroup.Item>
+                                </ListGroup>
+                            </Col>
                         </Row>
                         <br />
-                        <div>
-                            {isChecked ? (
-                                <Row>
-                                    <Col>
-                                        <Form.Group className="mb-3">
-                                            <Form.Label>Opciones de crédito:</Form.Label>
-                                            <Form.Select>
-                                                {local.map((data) => {
-                                                    return (
-                                                        <option key={data.id}>{data.nombre}</option>
-                                                    );
-                                                })}
-                                            </Form.Select>
-                                        </Form.Group>
-                                    </Col>
-                                </Row>
-                            ) : (<div></div>)}
-                        </div>
-                        <Row>
-                            <Col>
-                                <Form.Group className="mb-3">
-                                    <Form.Label>Código:</Form.Label>
-                                    <Form.Control type="text" placeholder="Código" id="descMat" name="descMat" />
-                                </Form.Group>
-                            </Col>
-                            <Col>
-                                <br />
-                                <Form.Check type="checkbox" label="Agregar nuevo precio" disabled={isPushSearch} checked={isChecked} onChange={handleOnChange} />
-                            </Col>
-                        </Row>
-                        <Row>
+                        <Row className='square border' style={{ justifyContent: 'end' }}>
                             <Col >
-                                {isPushSearch ? (
-                                    <Button onClick={ButtonOnChange} variant="outline-dark" >
-                                        Consultar precio
-                                    </Button>
-                                ) : (
-                                    <Button onClick={() => {
-                                        const funcion1 = ButtonOnChange();
-                                        const funcion2 = resetForm();
-                                        //EJECUTA
-                                        funcion1();
-                                        funcion2();
-                                    }} variant="outline-dark" >
-                                        Borrar
-                                    </Button>
-                                )}
+                                <h6>Total a pagar:</h6>
+                                <h6>Total pagado:</h6>
+                                <h6>Faltante:</h6>
                             </Col>
-                        </Row>
-                        <br />
-                        <Row>
-                            <Col>
-                                {!isPushSearch ? (
-                                    <Table striped bordered hover>
-                                        <thead>
-                                            <tr>
-                                                <th>Material</th>
-                                                <th>Descripción</th>
-                                                <th>Precio sin IVA</th>
-                                                <th>Precio con IVA</th>
-                                                <th>Local</th>
-                                                <th>Usuario mod</th>
-                                                <th>Fecha mod</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-                                            <tr>
-                                                <td >10103963</td>
-                                                <td >LG_TELEVISOR 65QNED80SQA 65" 4K QNED_Televisores / Monitores</td>
-                                                <td >1399.00</td>
-                                                <td >1566.88</td>
-                                                <td >Precio SAP</td>
-                                                <td >-</td>
-                                                <td >-</td>
-                                            </tr>
-                                        </tbody>
-                                    </Table>
-                                ) : (
-                                    <div></div>
-                                )}
+                            <Col xs='1' className="position-relative" >
+                                <ButtonIcon className="position-absolute bottom-0 start-0" variant='danger' text={'Cancelar'} type='button'>
+                                    <MdCancel />
+                                </ButtonIcon>
+                            </Col>
+                            <Col xs='1' className="position-relative" >
+                                <ButtonIcon className="position-absolute bottom-0 start-0" variant='primary' text={'Continuar'} type='submit'>
+                                    <BsFillCheckCircleFill />
+                                </ButtonIcon>
                             </Col>
                         </Row>
                     </Form>
                 </Card.Body>
-            </Card>
-            <br />
-            <div>
-                {isChecked ? (
-                    <Card>
-                        <Card.Body>
-                            <Form id="agregarNuevoPrecioForm">
-                                <Row><h4>Agregar nuevo precio</h4></Row>
-                                <br />
-                                <Row>
-                                    <Col>
-                                        <Form.Group className="mb-3">
-                                            <Form.Label>Nuevo precio sin IVA:</Form.Label>
-                                            <Form.Control type="text" placeholder="Precio sin IVA" id="descMat" name="descMat" />
-                                        </Form.Group>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col >
-                                        <Button variant="outline-dark" >Agregar precio</Button>
-                                    </Col>
-                                </Row>
-                            </Form>
-                        </Card.Body>
-                    </Card>
-                ) : (
-                    <div></div>
-                )}
-            </div>
+            </Card >
         </>);
 }
 

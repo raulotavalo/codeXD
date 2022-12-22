@@ -7,13 +7,13 @@ import { MuiPickersUtilsProvider} from '@material-ui/pickers'
 import DateFnsUtils from '@date-io/date-fns'
 import esLocale from 'date-fns/locale/es'
 
-import loginStorage from "./redux/storage/loginStorage";
+import reduxStorage from "./redux/storage/reduxStorage";
 import { Provider } from "react-redux";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={loginStorage}>
+  <Provider store={reduxStorage}>
   <React.StrictMode>
     <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale}>
     <App />

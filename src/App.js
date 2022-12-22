@@ -120,7 +120,6 @@ function App() {
   return (
     <Container fluid>
         <Router>
-
           <Routes>
             {routes.map((route, index) => (
               <Route
@@ -132,7 +131,6 @@ function App() {
               />
             ))}
           </Routes>
-
         </Router>
     </Container>
   );
