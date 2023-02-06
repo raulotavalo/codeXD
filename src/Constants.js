@@ -13,6 +13,14 @@ const production = false;
 const wsdlDBUG = 'http://172.20.0.58/WS_POS_web/wsPOSweb.asmx?WSDL';
 const wsdlPRD = 'http://www.eljuric.com/Ws_Table_FactPRD/v3/Ws_Table_Fac.asmx?wsdl'
 
+const tipoMaterial =
+{
+    combo: 'C',
+    lote: 'L',
+    serie: 'S',
+    ni_lote_ni_serie: 'N',
+
+}
 const iconesDictionary =
 {
     BiLabel: <BiLabel />,
@@ -48,5 +56,6 @@ export default {
     isProduction: production,
     iceFundas:0.08,
     codigoFundas: ["000000000060009225","000000000060009226","000000000060009227"],
+    tipoMaterial: tipoMaterial
     //wsdl: 'http://localhost/WS_Restaurant/wsTurquesa.asmx?WSDL'
 };

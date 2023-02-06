@@ -3,24 +3,34 @@ import Constants from "../Constants.js";
 import axios from 'axios';
 import X2JS from "x2js";
 
-async function soapGetTransactions(idUser, idModule) {
-    
+async function soapGetMaterialPriceCEP(pCodigoMaterial, pCodigoSAPCliente, pAlmacen, pSector, pOficinaVenta, pCanal, pOrganizacion) {
+
     let xmls = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\
     <soapenv:Header/>\
     <soapenv:Body>\
-       <tem:getTransactions>\
+       <tem:getPrecioMaterial>\
           <!--Optional:-->\
-          <tem:idUsuario>'+ idUser + '</tem:idUsuario>\
+          <tem:pCodigoMaterial>'+ pCodigoMaterial + '</tem:pCodigoMaterial>\
           <!--Optional:-->\
-          <tem:idModule>'+ idModule + '</tem:idModule>\
-       </tem:getTransactions>\
+          <tem:pCodigoSAPCliente>'+ pCodigoSAPCliente + '</tem:pCodigoSAPCliente>\
+          <!--Optional:-->\
+          <tem:pAlmacen>'+ pAlmacen + '</tem:pAlmacen>\
+          <!--Optional:-->\
+          <tem:pSector>'+ pSector + '</tem:pSector>\
+          <!--Optional:-->\
+          <tem:pOficinaVenta>'+ pOficinaVenta + '</tem:pOficinaVenta>\
+          <!--Optional:-->\
+          <tem:pCanal>'+ pCanal + '</tem:pCanal>\
+          <!--Optional:-->\
+          <tem:pOrganizacion>'+ pOrganizacion + '</tem:pOrganizacion>\
+       </tem:getPrecioMaterial>\
     </soapenv:Body>\
  </soapenv:Envelope>';
 
     const url = Constants.wsdl;
     const headers = {
         'Content-Type': 'text/xml;charset=UTF-8',
-        'SOAPAction': 'http://tempuri.org/getTransactions',
+        'SOAPAction': 'http://tempuri.org/getPrecioMaterial',
     };
     let data = null;
     data = await axios({
@@ -33,7 +43,7 @@ async function soapGetTransactions(idUser, idModule) {
         var x2js = new X2JS();
         var json = x2js.xml2js(response.data);
         console.log("response -> %s", JSON.stringify(json));
-        const data = JSON.stringify(json.Envelope.Body.getTransactionsResponse.getTransactionsResult.diffgram.NewDataSet.Table);
+        const data = JSON.stringify(json.Envelope.Body.getPrecioMaterialResponse.getPrecioMaterialResult);
         return data;
     }).catch((error) => {
         const data = ['4', '{"error":"error AXIOS"}', error];
@@ -42,4 +52,4 @@ async function soapGetTransactions(idUser, idModule) {
     return data;
 }
 
-export default soapGetTransactions;
+export default soapGetMaterialPriceCEP;

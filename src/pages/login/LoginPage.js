@@ -24,65 +24,95 @@ const LoginPage = props => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = await soapLogin(user, password);
-        const userJS = JSON.parse(data);
-        if (userJS.info = 'Y') {
-            dispatch(
-                login({
-                    idUser: userJS.idUsuario,
-                    user: userJS.usuario,
-                    nickName: userJS.alias,
-                    state: userJS.estado,
-                    ident: userJS.identificacion,
-                    name: userJS.nombre,
-                    salesmanCode: userJS.codigoVendedor,
-                    loggedIn: true
-                })
-            );
+        var userJS = null;
+        try {
+            userJS = JSON.parse(data);
+        } catch (e) {
 
-            const routs = await builTransactions(userJS.idUsuario);
+        }
+        alert(JSON.stringify(userJS));
+        if (userJS !== null) {
+            if (userJS.info = 'Y') {
+                dispatch(
+                    login({
+                        idUser: userJS.idUsuario,
+                        user: userJS.usuario,
+                        nickName: userJS.alias,
+                        state: userJS.estado,
+                        ident: userJS.identificacion,
+                        name: userJS.nombre,
+                        salesmanCode: userJS.codigoVendedor,
+                        loggedIn: true
+                    })
+                );
 
-            console.log("RUTAS: " + JSON.stringify(routs));
-            dispatch(
-                transactionMod(routs)
-            );
-            navigate("/indexpage");
+                const routs = await builTransactions(userJS.idUsuario);
 
+                console.log("RUTAS: " + JSON.stringify(routs));
+                dispatch(
+                    transactionMod(routs)
+                );
+                navigate("/indexpage");
+
+            } else {
+                alert("Credenciales incorrectas");
+            }
         } else {
-            alert("Credenciales incorrectas");
+            alert("No se pudo verificar su cuenta. Intente nuevamente.");
         }
 
     };
 
     async function builTransactions(idUser) {
         const data = await soapGetTransactions(idUser, '');
-        const modulesJS = JSON.parse(data);
+        var modulesJS = null;
+        try {
+            modulesJS = JSON.parse(data);
+        } catch (e) {
+
+        }
         const routes = [];
         const parserDOM = new DOMParser();
         //await modulesJS.map(async (module, index) => {
-        for (const indexModule in modulesJS) {
-            const module = modulesJS[indexModule];
-            const dataModule = await soapGetTransactions(idUser, module.idModulo);
-            const transactionsJS = JSON.parse(dataModule);
-            const subroutes = [];
-            //await transactionsJS.map((transaction, index) => {
-            for (const indexTransaction in transactionsJS) {
-                const transaction = transactionsJS[indexTransaction];
-                delete transaction['_diffgr:id'];
-                delete transaction['_msdata:rowOrder'];
-                transaction.iconoWeb=transaction.iconoWeb.trim();
-                subroutes.push(transaction);
+        if (modulesJS !== null) {
+            for (const indexModule in modulesJS) {
+                const module = modulesJS[indexModule];
+                const dataModule = await soapGetTransactions(idUser, module.idModulo);
+
+                var transactionsJS = null
+                try {
+                    transactionsJS = JSON.parse(dataModule);
+                } catch (e) { }
+                if (transactionsJS !== null) {
+                    const subroutes = [];
+                    //await transactionsJS.map((transaction, index) => {
+                    for (const indexTransaction in transactionsJS) {
+                        const transaction = transactionsJS[indexTransaction];
+                        delete transaction['_diffgr:id'];
+                        delete transaction['_msdata:rowOrder'];
+                        delete transaction['_diffgr:hasChanges'];
+                        transaction.iconoWeb = transaction.iconoWeb.trim();
+                        subroutes.push(transaction);
+                    }
+                    //});
+                    delete module['_diffgr:id'];
+                    delete module['_msdata:rowOrder'];
+                    delete module['_diffgr:hasChanges'];
+                    module.iconoWeb = module.iconoWeb.trim();
+                    if (subroutes.length != 0) {
+                        module.subRoutes = subroutes;
+                    }
+                    routes.push(module);
+                } else {
+                    alert("No se recuperarón las transacciones del POSweb");
+                }
             }
+
             //});
-            delete module['_diffgr:id'];
-            delete module['_msdata:rowOrder'];
-            module.iconoWeb=module.iconoWeb.trim();
-            if (subroutes.length != 0) {
-                module.subRoutes = subroutes;
-            }
-            routes.push(module);
+            return (routes);
+        } else {
+            alert("No se recupero los modulos por favor intente refrescar la página.")
         }
-        //});
-        return (routes);
     }
 
     const onUserChange = (event) => {

@@ -3,8 +3,50 @@ import Constants from "../Constants.js";
 import axios from 'axios';
 import X2JS from "x2js";
 
-async function soapUpdatePrices(codigo_cliente, sector, ofVent,canal,condicionPago,sociedad,items,promoEmpleado,entrada) {
+async function soapGetDiscountsTable(cliente, sector, ofVent, canal, condicionPago, sociedad, listaMateriales,conFinanciamiento, cantidadUnica, promoEmpleado, entrada) {
+    var listaItems=[];
+    if (conFinanciamiento) {
+        var materialFinanciamiento;
+
+        if (sociedad==="2010") {
+            materialFinanciamiento = ";90000000;1;;0";
+        } else if (sociedad==="3010") {
+            if (Constants.isProduction)
+                materialFinanciamiento = ";200000002;1;;0"; //COD MAT FINANCIAMIENTO PRD
+            else
+                materialFinanciamiento = ";200000004;1;;0"; //COD MAT FINANCIAMIENTO QAS
+
+        } else if (sociedad==="4010") {
+            if (Constants.isProduction)
+                materialFinanciamiento = ";2001000001;1;;0";
+            else
+                materialFinanciamiento = ";2001000008;1;;0";
+        } else {
+            materialFinanciamiento = ";20000000;1;;0";
+        }
+
+        listaItems = [...listaItems, materialFinanciamiento];
+
+    }
+
+    listaMateriales.map((mat)=>{
+        const dCantidad = parseFloat(mat.cantidad);
+        if (cantidadUnica) dCantidad = 1.00;
+        var cantidad = dCantidad.intValue();
+        const materialActual = mat.almacen + ";"
+            + mat.codigo + ";"
+            + cantidad + ";"
+            + mat.centro + ";"
+            + mat.descuentoAplicado;
+
+        listaItems.add(materialActual);
+    });
+
     
+
+    var jsonItem = JSON.stringify(listaItems);
+
+
     var docuVentas = "ZCEP";
 
     switch (sociedad.trim()) {
@@ -30,12 +72,12 @@ async function soapUpdatePrices(codigo_cliente, sector, ofVent,canal,condicionPa
             break;
     }
 
-    let xmls = '<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">\
-    <soap:Header/>\
-    <soap:Body>\
+    let xmls = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\
+    <soapenv:Header/>\
+    <soapenv:Body>\
        <tem:actualizarPreciosDescuentos>\
           <!--Optional:-->\
-          <tem:cliente>'+codigo_cliente+'</tem:cliente>\
+          <tem:cliente>'+cliente+'</tem:cliente>\
           <!--Optional:-->\
           <tem:sector>'+sector+'</tem:sector>\
           <!--Optional:-->\
@@ -47,7 +89,7 @@ async function soapUpdatePrices(codigo_cliente, sector, ofVent,canal,condicionPa
           <!--Optional:-->\
           <tem:sociedad>'+sociedad+'</tem:sociedad>\
           <!--Optional:-->\
-          <tem:items>'+JSON.stringify(items)+'</tem:items>\
+          <tem:items>'+listaItems+'</tem:items>\
           <!--Optional:-->\
           <tem:docuVentas>'+docuVentas+'</tem:docuVentas>\
           <!--Optional:-->\
@@ -55,8 +97,8 @@ async function soapUpdatePrices(codigo_cliente, sector, ofVent,canal,condicionPa
           <!--Optional:-->\
           <tem:entrada>'+entrada+'</tem:entrada>\
        </tem:actualizarPreciosDescuentos>\
-    </soap:Body>\
- </soap:Envelope>';
+    </soapenv:Body>\
+ </soapenv:Envelope>';
 
     const url = Constants.wsdl;
     const headers = {
@@ -65,7 +107,6 @@ async function soapUpdatePrices(codigo_cliente, sector, ofVent,canal,condicionPa
     };
 
     let data = null;
-    console.log('XMLS: '+xmls);
     data = await axios({
         method: 'POST',
         url: Constants.wsdl,
@@ -76,13 +117,13 @@ async function soapUpdatePrices(codigo_cliente, sector, ofVent,canal,condicionPa
         var x2js = new X2JS();
         var json = x2js.xml2js(response.data);
         console.log("response -> %s", JSON.stringify(json));
-        const data = JSON.stringify( json.Envelope.Body.actualizarPreciosDescuentosResponse.actualizarPreciosDescuentosResult);
+        const data = JSON.stringify(json.Envelope.Body.actualizarPreciosDescuentosResponse.actualizarPreciosDescuentosResult.diffgram).split(',"_diffgr:id"')[0] + "}";
         return data;
     }).catch((error) => {
-        const data = ['4', '{"error":"error AXIOS"}',error];
+        const data = ['4', '{"error":"error AXIOS"}', error];
         return data;
     })
     return data;
 }
 
-export default soapUpdatePrices;
+export default soapGetDiscountsTable;

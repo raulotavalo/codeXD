@@ -10,11 +10,4 @@ export default[
         isChecked: false,
         nombre: "Consumidor Final"
     }
-    ,
-    {
-        id: 'cbPassport',
-        isChecked: false,
-        nombre: "Pasaporte"
-    }
-    
 ]

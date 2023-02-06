@@ -30,9 +30,9 @@ async function soapLogin(user, password) {
         data: xmls,
         withCredentials: false
     }).then((response) => {
-        console.log("response -> %s", response.data);
         var x2js = new X2JS();
         var json = x2js.xml2js(response.data);
+        console.log("response -> %s", JSON.stringify(json));
         const data = JSON.stringify( json.Envelope.Body.LoginResponse.LoginResult.diffgram.usuarios.usuario).split(',"_diffgr:id"')[0]+"}";
         return data;
     }).catch((error) => {

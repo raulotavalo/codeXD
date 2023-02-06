@@ -28,10 +28,10 @@ async function soapGetCustomerData(identificacion) {
         data: xmls,
         withCredentials: false
     }).then((response) => {
-        console.log("response -> %s", response.data);
         var x2js = new X2JS();
         var json = x2js.xml2js(response.data);
-        const data = JSON.stringify(json.Envelope.Body.getClienteResponse.getClienteResult.diffgram.NewDataSet.Table);
+        console.log("response -> %s", JSON.stringify(json));
+        const data = JSON.stringify(json.Envelope.Body.getClienteResponse.getClienteResult.diffgram.DocumentElement.cliente);
         return data;
     }).catch((error) => {
         const data = ['4', '{"error":"error AXIOS"}', error];

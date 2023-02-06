@@ -3,22 +3,26 @@ import Constants from "../Constants.js";
 import axios from 'axios';
 import X2JS from "x2js";
 
-async function soapGetPaymentConditions(ofiVent) {
+async function soapGetMaterialPrice(pAlmacen, pCodigoMat, pCanal) {
     
     let xmls = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\
     <soapenv:Header/>\
     <soapenv:Body>\
-       <tem:getCondicionesPago>\
+       <tem:getMaterial>\
           <!--Optional:-->\
-          <tem:ofiVent>'+ofiVent+'</tem:ofiVent>\
-       </tem:getCondicionesPago>\
+          <tem:pAlmacen>'+pAlmacen+'</tem:pAlmacen>\
+          <!--Optional:-->\
+          <tem:pCodigoMat>'+pCodigoMat+'</tem:pCodigoMat>\
+          <!--Optional:-->\
+          <tem:pCanal>'+pCanal+'</tem:pCanal>\
+       </tem:getMaterial>\
     </soapenv:Body>\
  </soapenv:Envelope>';
 
     const url = Constants.wsdl;
     const headers = {
         'Content-Type': 'text/xml;charset=UTF-8',
-        'SOAPAction': 'http://tempuri.org/getCondicionesPago',
+        'SOAPAction': 'http://tempuri.org/getMaterial',
     };
     let data = null;
     data = await axios({
@@ -30,8 +34,8 @@ async function soapGetPaymentConditions(ofiVent) {
     }).then((response) => {
         var x2js = new X2JS();
         var json = x2js.xml2js(response.data);
-        console.log("response -> %s",JSON.stringify(json));
-        const data = JSON.stringify(json.Envelope.Body.getCondicionesPagoResponse.getCondicionesPagoResult.diffgram.NewDataSet.Formas);
+        console.log("response -> %s", JSON.stringify(json));
+        const data = JSON.stringify(json.Envelope.Body.getMaterialResponse.getMaterialResult.diffgram.DocumentElement.cliente);
         return data;
     }).catch((error) => {
         const data = ['4', '{"error":"error AXIOS"}', error];
@@ -40,4 +44,4 @@ async function soapGetPaymentConditions(ofiVent) {
     return data;
 }
 
-export default soapGetPaymentConditions;
+export default soapGetMaterialPrice;

@@ -33,8 +33,11 @@ const Ventas = props => {
                 if (dataJSON[0] == "4") {
                     alert("Error: " + JSON.stringify(dataJSON[1]));
                 } else {
-                    const constantsJS = JSON.parse(dataJSON);
-                    if (constantsJS != null) {
+                    var constantsJS = null;
+                    try {
+                        constantsJS=JSON.parse(dataJSON);
+                    } catch (e) { }
+                    if (constantsJS !== null) {
                         dispatch(
                             constants({
                                 iva: constantsJS[0].constValor,
@@ -59,9 +62,13 @@ const Ventas = props => {
                     alert("Error: " + JSON.stringify(dataJSON[1]));
                 } else {
                     var cashRegistersOptions = [];
-                    const cashRegisterJS = JSON.parse(dataJSON);
+                    var cashRegisterJS = null;
+                    try {
+                        cashRegisterJS=JSON.parse(dataJSON);
+                    } catch (e) { }
                     if (cashRegisterJS != null) {
-                        if (typeof (cashRegisterJS) === 'object') {
+
+                        if (typeof (cashRegisterJS) === 'object' && cashRegisterJS.length < 2) {
                             const optionJSON = cashRegisterJS;
                             cashRegistersOptions = [...cashRegistersOptions, { optionJSON }];
                         } else {
@@ -75,13 +82,16 @@ const Ventas = props => {
             }
         }
     }
+
     const saveCashRegisterRedux = (selectedCashRegister) => {
+
         dispatch(
             cashRegister({
                 selectedCashRegister
             })
         );
     }
+
     useLayoutEffect(() => {
         if (firstUpdate) {
             setFirstUpdate(false);
