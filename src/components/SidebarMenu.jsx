@@ -2,7 +2,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import { FaAngleDown } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import "../styles/Sidebar.css"
+import "../styles/Sidebar.css";
+import Constans from '../Constants';
 
 const menuAnimation = {
   hidden: {
@@ -38,6 +39,13 @@ const menuItemAnimation = {
 
 const SidebarMenu = ({ route, showAnimation, isOpen, setIsOpen }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const parserDOM=new DOMParser();
+  const options = {
+    htmlparser2: {
+      lowerCaseTags: false
+    },
+    trim: true
+  };
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
     setIsOpen(true);
@@ -52,7 +60,7 @@ const SidebarMenu = ({ route, showAnimation, isOpen, setIsOpen }) => {
     <>
       <div className="menu" onClick={toggleMenu}>
         <div className="menu_item">
-          <div className="icon">{route.icon}</div>
+          <div className="icon" >{Constans.icones[route.iconoWeb]}</div>
           <AnimatePresence>
             {isOpen && (
               <motion.div
@@ -62,7 +70,7 @@ const SidebarMenu = ({ route, showAnimation, isOpen, setIsOpen }) => {
                 exit="hidden"
                 className="link_text"
               >
-                {route.name}
+                {route.tituloWeb}
               </motion.div>
             )}
           </AnimatePresence>
@@ -92,9 +100,9 @@ const SidebarMenu = ({ route, showAnimation, isOpen, setIsOpen }) => {
           >
             {route.subRoutes.map((subRoute, i) => (
               <motion.div variants={menuItemAnimation} key={i} custom={i}>
-                <NavLink to={subRoute.path} className="link">
-                  <div className="icon">{subRoute.icon}</div>
-                  <motion.div className="link_text">{subRoute.name}</motion.div>
+                <NavLink to={subRoute.rutaWeb} className="link" key={'nl'+i+subRoute.rutaWeb}>
+                  <div key={'div'+i+subRoute.rutaWeb} className="icon">{Constans.icones[subRoute.iconoWeb]}</div>
+                  <motion.div className="link_text">{subRoute.tituloWeb}</motion.div>
                 </NavLink>
               </motion.div>
             ))}

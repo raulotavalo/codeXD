@@ -1,27 +1,22 @@
 import { NavLink } from "react-router-dom";
-import {FaHammer, FaTimes, FaJoomla, FaConfluence, FaStripeS, FaFileAlt, FaReceipt, FaRedoAlt, FaMoneyBillWave, FaBook, FaArrowRight, FaClipboardList, FaBars, FaHome, FaLock, FaMoneyBill, FaUser, FaRegClipboard, FaSuitcase, FaPoll, FaFunnelDollar, FaDonate } from "react-icons/fa";
-import { MdMessage } from "react-icons/md";
-import { BiAnalyse, BiSearch, BiPrinter, BiLabel } from "react-icons/bi";
-import { ImLocation} from "react-icons/im";
-import { TbFingerprintOff} from "react-icons/tb";
-import { SiYamahamotorcorporation} from "react-icons/si";
-
-
-import { BiCog } from "react-icons/bi";
-import { AiFillHeart, AiTwotoneFileExclamation } from "react-icons/ai";
-import { BsCartCheck } from "react-icons/bs";
-import { useState } from "react";
+import React, { useState} from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
 import "../styles/Sidebar.css"
-const routes = [
+import { useSelector } from "react-redux";
+import { getTransaction } from "../redux/reducer/transactionsSlice";
+import {FaBars} from "react-icons/fa";
+import Constants from '../Constants';
+
+
+/*const routes = [
   {
     path: "/indexpage",
     name: "Dashboard",
     icon: <FaHome />,
   },
   {
-    path: "/addclientes",
+    path: "/facturacion",
     name: "Facturación",
     icon: <FaRegClipboard />,
     subRoutes: [
@@ -53,7 +48,7 @@ const routes = [
     ],
   },
   {
-    path: "/messages",
+    path: "/cartera",
     name: "Cartera",
     icon: <FaSuitcase />,
     subRoutes: [
@@ -266,8 +261,17 @@ const routes = [
     icon: <BiLabel />,
   },
 ];
+*/
 
 const SideBar = ({ children }) => {
+
+  const options = {
+    htmlparser2: {
+      lowerCaseTags: false
+    }
+  };
+  const routes = useSelector(getTransaction);
+
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const inputAnimation = {
@@ -303,10 +307,10 @@ const SideBar = ({ children }) => {
       },
     },
   };
-
+  const parserDOM= new DOMParser();
   return (
     <>
-      <div id = "sidebar">
+      <div id = "sidebar" style={{width: isOpen ? "250px" : "45px"}}>
         <motion.div
           animate={{
             width: isOpen ? "250px" : "45px",
@@ -346,6 +350,7 @@ const SideBar = ({ children }) => {
                   <SidebarMenu
                     setIsOpen={setIsOpen}
                     route={route}
+                    key={index+route.rutaWeb}
                     showAnimation={showAnimation}
                     isOpen={isOpen}
                   />
@@ -354,22 +359,23 @@ const SideBar = ({ children }) => {
 
               return (
                 <NavLink
-                  to={route.path}
+                  to={route.rutaWeb}
                   key={index}
                   className="link"
                   activeClassName="active"
                 >
-                  <div className="icon">{route.icon}</div>
-                  <AnimatePresence>
+                  <div className="icon" key={'div'+index+route.rutaWeb}>{Constants.icones[route.iconoWeb]}</div>
+                  <AnimatePresence key={'ap'+index+route.rutaWeb}>
                     {isOpen && (
                       <motion.div
                         variants={showAnimation}
                         initial="hidden"
                         animate="show"
                         exit="hidden"
+                        key={'motion.div'+index+route.rutaWeb}
                         className="link_text"
                       >
-                        {route.name}
+                        {route.tituloWeb}
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -378,7 +384,6 @@ const SideBar = ({ children }) => {
             })}
           </section>
         </motion.div>
-
         <main>{children}</main>
       </div>
     </>

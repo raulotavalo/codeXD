@@ -1,0 +1,16 @@
+.tableContainer{
+  border-radius: 20px;
+  height: 200px;
+  overflow: scroll;
+}
+
+thead{
+  z-index: 100;
+  background-color: slategrey;
+  color: white;
+  position: sticky;
+  top: 0px;
+  margin: 0 0 0 0;
+}
+
+

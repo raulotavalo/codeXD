@@ -1,0 +1,12 @@
+.resumeTotals {
+  background-color: aqua;
+  align-self: flex-end;
+  margin-top: auto;
+}
+
+.columnJustified {
+  background-color: blue;
+  justify-content: space-around;
+  flex-direction: column;
+  height: auto;
+}
